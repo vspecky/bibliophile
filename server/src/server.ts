@@ -3,6 +3,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+import authRouter from './routes/auth.routes';
+
 dotenv.config();
 
 const app = express();
@@ -25,6 +27,8 @@ mongoose.connection.once('open', () => {
 app.get('/', (_, res) => {
     res.send("Working");
 });
+
+app.use('/auth', authRouter);
 
 const PORT = process.env.PORT || 5000;
 
