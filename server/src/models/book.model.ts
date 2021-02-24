@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 
-interface IBook extends Document {
+export interface IBook extends Document {
     user: Schema.Types.ObjectId;
     name: string;
     author: string;
@@ -9,6 +9,7 @@ interface IBook extends Document {
     genre2: Schema.Types.ObjectId;
     age: number;
     isbn: string;
+    price: number;
 };
 
 const bookSchema = new Schema({
@@ -45,6 +46,10 @@ const bookSchema = new Schema({
     },
     isbn: {
         type: String,
+        required: true
+    },
+    price: {
+        type: Number,
         required: true
     }
 }, {
