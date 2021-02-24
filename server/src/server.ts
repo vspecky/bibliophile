@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
 import authRouter from './routes/auth.routes';
+import booksRouter from './routes/books.routes';
+import genresRouter from './routes/genres.routes';
 
 dotenv.config();
 
@@ -31,6 +33,8 @@ app.get('/', (_, res) => {
 });
 
 app.use('/auth', authRouter);
+app.use('/books', booksRouter);
+app.use('/genres', genresRouter);
 
 const PORT = process.env.PORT || 5000;
 
