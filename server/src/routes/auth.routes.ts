@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import * as authc from './controllers/auth.controllers';
 import { body } from 'express-validator';
 
@@ -36,5 +36,9 @@ router.post('/signin', [
         .notEmpty(),
 
 ], authc.signin);
+
+router.get('/getuser', authc.checkAuth, async (req: Request, res: Response) => {
+    res.json(req.user);
+});
 
 export default router;
