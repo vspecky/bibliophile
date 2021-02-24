@@ -35,7 +35,7 @@ router.post('/signin', [
     body("password")
         .notEmpty(),
 
-], authc.signin);
+], authc.signIn);
 
 router.get('/getuser', authc.checkAuth, async (req: Request, res: Response) => {
     res.json(req.user);
