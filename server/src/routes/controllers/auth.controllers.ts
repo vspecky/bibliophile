@@ -35,7 +35,7 @@ export const register = async (req: Request, res: Response) => {
         .catch(err => res.status(400).json(err));
 };
 
-export const signin = async (req: Request, res: Response) => {
+export const signIn = async (req: Request, res: Response) => {
     const result = validationResult(req);
 
     if (!result.isEmpty()) {
@@ -60,12 +60,13 @@ export const signin = async (req: Request, res: Response) => {
         }
 
         const secret = process.env.SECRET || "somesecret";
-        const payload: UserDetails = {
+        const payload = {
             email: doc.email,
             fname: doc.fname,
             lname: doc.lname,
             role: doc.role,
             bio: doc.bio,
+            id: doc._id,
         };
         const token = jwt.sign(payload, secret);
 
@@ -102,6 +103,20 @@ export const checkAuth = async (req: Request, res: Response, next: NextFunction)
 
         next();
     });
-}
+};
+
+export const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
+    if (!req.user) {
+        res.status(401).json({ msg: "Only admins can do that" });
+        return;
+    }
+
+    if (req.user.role !== 1) {
+        res.status(403).json({ msg: "Only admins can do that" });
+        return;
+    }
+
+    next();
+};
 
 export default {};
