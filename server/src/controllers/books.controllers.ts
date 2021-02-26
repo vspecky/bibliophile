@@ -1,4 +1,4 @@
-import Book, { IBook } from '../../models/book.model';
+import Book, { IBook } from '../models/book.model';
 import { Request, Response } from 'express';
 import { CallbackError } from 'mongoose';
 import { validationResult } from 'express-validator';

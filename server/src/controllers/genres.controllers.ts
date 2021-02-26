@@ -1,4 +1,4 @@
-import Genre, { IGenre } from '../../models/genre.model';
+import Genre, { IGenre } from '../models/genre.model';
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 

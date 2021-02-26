@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
-import * as authc from './controllers/auth.controllers';
-import * as genresc from './controllers/genres.controllers';
+import * as authc from '../controllers/auth.controllers';
+import * as genresc from '../controllers/genres.controllers';
 
 const router = Router();
 

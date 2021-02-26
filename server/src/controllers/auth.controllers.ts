@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
-import User, { IUser } from '../../models/user.model';
+import User, { IUser } from '../models/user.model';
 import { CallbackError } from 'mongoose';
 import jwt, { VerifyErrors } from 'jsonwebtoken';
 
