@@ -37,7 +37,9 @@ router.post('/signin', [
 
 ], authc.signIn);
 
-router.get('/getuser', authc.checkAuth, async (req: Request, res: Response) => {
+router.post('/signout', authc.isSignedIn, authc.signOut);
+
+router.get('/getuser', authc.isSignedIn, async (req: Request, res: Response) => {
     res.json(req.user);
 });
 

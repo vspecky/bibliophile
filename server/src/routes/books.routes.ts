@@ -5,9 +5,9 @@ import * as booksc from './controllers/books.controllers';
 
 const router = Router();
 
-router.get('/', authc.checkAuth, booksc.allbooks);
+router.get('/', authc.isSignedIn, booksc.allbooks);
 
-router.post('/add', authc.checkAuth, [
+router.post('/add', authc.isSignedIn, [
     body("name", "Please enter the name of the book (Max. 200 characters)")
         .notEmpty()
         .isLength({ min: 1, max: 200 }),

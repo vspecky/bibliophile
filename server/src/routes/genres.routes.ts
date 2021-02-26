@@ -5,9 +5,9 @@ import * as genresc from './controllers/genres.controllers';
 
 const router = Router();
 
-router.get('/', authc.checkAuth, genresc.getAllGenres);
+router.get('/', authc.isSignedIn, genresc.getAllGenres);
 
-router.post('/add', authc.checkAuth, authc.isAdmin, [
+router.post('/add', authc.isSignedIn, authc.isAdmin, [
     body("name")
         .notEmpty() 
 
