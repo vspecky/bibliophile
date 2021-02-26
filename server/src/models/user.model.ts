@@ -1,6 +1,10 @@
 import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcrypt';
 
+interface ValidationCallback {
+    (err: Error, same: boolean): void;
+}
+
 export interface IUser extends Document {
     email: string;
     passhash: string;
@@ -10,7 +14,7 @@ export interface IUser extends Document {
     bio: string;
     role: number;
 
-    validatePassword(pass: String): boolean;
+    validatePassword(pass: String, cb: ValidationCallback): void;
 }
 
 const userSchema = new Schema<IUser>({
@@ -65,8 +69,8 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
-userSchema.methods.validatePassword = function(pass: string) {
-    return bcrypt.compareSync(pass, this.passhash);
+userSchema.methods.validatePassword = async function(pass: string, cb: ValidationCallback) {
+    bcrypt.compare(pass, this.passhash, cb);
 }
 
 export default model<IUser>("User", userSchema);
