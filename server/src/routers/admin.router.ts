@@ -4,7 +4,7 @@ import * as adminc from '../controllers/admin.controllers';
 
 const router = Router();
 
-router.route('/delete/post/:id').post(
+router.route('/post/:id').post(
     authc.isSignedIn,
     authc.isAdmin,
     adminc.deleteTopicOrPost
