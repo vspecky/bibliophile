@@ -4,9 +4,9 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
-import authRouter from './routes/auth.routes';
-import booksRouter from './routes/books.routes';
-import genresRouter from './routes/genres.routes';
+import authRouter from './routers/auth.router';
+import booksRouter from './routers/books.router';
+import genresRouter from './routers/genres.router';
 
 dotenv.config();
 
@@ -30,6 +30,11 @@ mongoose.connection.once('open', () => {
 
 app.get('/', (_, res) => {
     res.send("Working");
+});
+
+app.get('/test', async (req, res) => {
+    console.log(req.query);
+    res.sendStatus(200);
 });
 
 app.use('/auth', authRouter);
