@@ -1,4 +1,4 @@
-interface UserDetails {
+interface UserDetails extends Document {
     email: string;
     fname: string;
     lname: string;
