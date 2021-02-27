@@ -1,11 +1,11 @@
 import { Schema, model, Document } from 'mongoose';
 
-interface IPost extends Document {
+export interface IPost extends Document {
     user: Schema.Types.ObjectId;
     content: string;
 }
 
-interface ITopic extends Document {
+export interface ITopic extends Document {
     user: Schema.Types.ObjectId;
     genre: Schema.Types.ObjectId;
     title: string;
