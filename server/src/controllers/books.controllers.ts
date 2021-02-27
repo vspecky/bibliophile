@@ -151,12 +151,6 @@ export const oneBookById = async (req: Request, res: Response) => {
                 return;
             }
 
-            if ((doc.user as any)._id.toString() !== (req.user as any).id) {
-                console.log((doc.user as any)._id === (req.user as any).id);
-                res.sendStatus(403);
-                return;
-            }
-
             res.status(201).json(doc);
         });
 };
