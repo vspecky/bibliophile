@@ -10,4 +10,10 @@ router.route('/post/:id').post(
     adminc.deleteTopicOrPost
 );
 
+router.route('/book/:id').post(
+    authc.isSignedIn,
+    authc.isAdmin,
+    adminc.deleteBook
+);
+
 export default router;
