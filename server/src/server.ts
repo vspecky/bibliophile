@@ -8,6 +8,7 @@ import authRouter from './routers/auth.router';
 import booksRouter from './routers/books.router';
 import genresRouter from './routers/genres.router';
 import forumsRouter from './routers/forums.router';
+import adminRouter from './routers/admin.router';
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use('/auth', authRouter);
 app.use('/books', booksRouter);
 app.use('/genres', genresRouter);
 app.use('/forum', forumsRouter);
+app.use('/admin', adminRouter);
 
 const PORT = process.env.PORT || 5000;
 
