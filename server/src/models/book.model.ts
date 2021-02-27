@@ -5,8 +5,7 @@ export interface IBook extends Document {
     name: string;
     author: string;
     description: string;
-    genre1: Schema.Types.ObjectId;
-    genre2: Schema.Types.ObjectId;
+    genre: Array<Schema.Types.ObjectId>;
     age: number;
     isbn: string;
     price: number;
@@ -31,15 +30,10 @@ const bookSchema = new Schema({
         required: true,
         maxLength: 2000,
     },
-    genre1: {
-        type: Schema.Types.ObjectId,
-        ref: "Genre",
-        required: true,
-    },
-    genre2: {
+    genre: [{
         type: Schema.Types.ObjectId,
         ref: "Genre"
-    },
+    }],
     age: {
         type: Number,
         required: true,
@@ -51,7 +45,7 @@ const bookSchema = new Schema({
     price: {
         type: Number,
         required: true
-    }
+    },
 }, {
     timestamps: true,
 });
